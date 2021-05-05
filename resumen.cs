@@ -76,7 +76,7 @@ namespace Sistema_de_deciciones_de_Funeraria
             MessageBox.Show("Operacion realizada con exito!", "DATOS GUARDADOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
             frmrecibos r = new frmrecibos();
             ReportDocument oRep = new ReportDocument();
-            oRep.Load(@"C:\Funeraria\imprimir.rpt");
+            oRep.Load(@"C:\funado\imprimir.rpt");
             oRep.SetParameterValue("@idcliente", id_cliente);
             oRep.SetParameterValue("@idpaquete", id_paquete);
             oRep.SetParameterValue("@fecha", DateTime.Now);
@@ -118,6 +118,7 @@ namespace Sistema_de_deciciones_de_Funeraria
         public double ObtenerMensualidad(double total) // total sera el precio total del paquete elegido
         {
             mensualidad = (total - enganche) / 3;
+            mensualidad = Math.Round(mensualidad, 2, MidpointRounding.AwayFromZero);
             lblEnganche.Text = "$ " + enganche.ToString() + " mxn";
             lblMensualidad.Text = "$ " + mensualidad.ToString() + " mxn";
             return mensualidad;
