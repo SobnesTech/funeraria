@@ -71,6 +71,7 @@ namespace Sistema_de_deciciones_de_Funeraria
             this.bt_Oro.BackColor = System.Drawing.Color.Transparent;
             this.bt_Oro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bt_Oro.BackgroundImage")));
             this.bt_Oro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bt_Oro.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bt_Oro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_Oro.Location = new System.Drawing.Point(358, 138);
             this.bt_Oro.Name = "bt_Oro";
@@ -85,12 +86,13 @@ namespace Sistema_de_deciciones_de_Funeraria
             this.bt_Estandar.BackColor = System.Drawing.Color.Transparent;
             this.bt_Estandar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bt_Estandar.BackgroundImage")));
             this.bt_Estandar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bt_Estandar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bt_Estandar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_Estandar.Location = new System.Drawing.Point(128, 138);
             this.bt_Estandar.Name = "bt_Estandar";
             this.bt_Estandar.Size = new System.Drawing.Size(135, 135);
             this.bt_Estandar.TabIndex = 10;
-            this.bt_Estandar.Text = "Estandar";
+            this.bt_Estandar.Text = "Economico";
             this.bt_Estandar.UseVisualStyleBackColor = false;
             this.bt_Estandar.Click += new System.EventHandler(this.bt_Estandar_Click);
             // 
@@ -99,12 +101,13 @@ namespace Sistema_de_deciciones_de_Funeraria
             this.bt_Economico.BackColor = System.Drawing.Color.Transparent;
             this.bt_Economico.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bt_Economico.BackgroundImage")));
             this.bt_Economico.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bt_Economico.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bt_Economico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_Economico.Location = new System.Drawing.Point(128, 302);
             this.bt_Economico.Name = "bt_Economico";
             this.bt_Economico.Size = new System.Drawing.Size(135, 135);
             this.bt_Economico.TabIndex = 12;
-            this.bt_Economico.Text = "Economico";
+            this.bt_Economico.Text = "Estandar";
             this.bt_Economico.UseVisualStyleBackColor = false;
             this.bt_Economico.Click += new System.EventHandler(this.bt_Economico_Click);
             // 
@@ -113,6 +116,7 @@ namespace Sistema_de_deciciones_de_Funeraria
             this.bt_Diamante.BackColor = System.Drawing.Color.Transparent;
             this.bt_Diamante.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bt_Diamante.BackgroundImage")));
             this.bt_Diamante.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bt_Diamante.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bt_Diamante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_Diamante.Location = new System.Drawing.Point(358, 302);
             this.bt_Diamante.Name = "bt_Diamante";
@@ -126,12 +130,15 @@ namespace Sistema_de_deciciones_de_Funeraria
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(137, 460);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label3.Location = new System.Drawing.Point(138, 440);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(334, 24);
+            this.label3.Size = new System.Drawing.Size(348, 26);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Presione << ENTER >> para continuar";
+            this.label3.Text = "Cliquee el paquete que desea contratar.";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // label4
@@ -173,6 +180,7 @@ namespace Sistema_de_deciciones_de_Funeraria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(668, 513);
@@ -186,11 +194,11 @@ namespace Sistema_de_deciciones_de_Funeraria
             this.Controls.Add(this.bt_Oro);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Paquetes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P A Q U E T E S    D I S P O N I B L E S ";
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Paquetes_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
