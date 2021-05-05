@@ -171,8 +171,8 @@ namespace Sistema_de_deciciones_de_Funeraria
             SqlCommand comando = new SqlCommand(query, conexion);
             comando.Parameters.Clear();
             comando.Parameters.AddWithValue("@id", idcliente);
-            comando.Parameters.AddWithValue("@nombre", txt_Cliente.Text);
-            comando.Parameters.AddWithValue("@domicilio", txt_Domicilio.Text);
+            comando.Parameters.AddWithValue("@nombre", cliente);
+            comando.Parameters.AddWithValue("@domicilio", domicilio);
             comando.Parameters.AddWithValue("@estadocivil", ec);
             comando.Parameters.AddWithValue("@hijos", hijos);
             comando.Parameters.AddWithValue("@ingresoMen", in_mensual);
@@ -251,6 +251,8 @@ namespace Sistema_de_deciciones_de_Funeraria
                 }
                 else
                 {
+                    cliente = txt_Cliente.Text;
+                    domicilio = txt_Domicilio.Text;
                     Max();
                     in_mensual = Convert.ToDouble(txt_Ingresos.Text);
                     Desicion_Rules(ec, hijos);
