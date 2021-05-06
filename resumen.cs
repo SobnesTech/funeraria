@@ -76,7 +76,7 @@ namespace Sistema_de_deciciones_de_Funeraria
             MessageBox.Show("Operacion realizada con exito!", "DATOS GUARDADOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
             frmrecibos r = new frmrecibos();
             ReportDocument oRep = new ReportDocument();
-            oRep.Load(@"C:\funado\imprimir.rpt");
+            oRep.Load(@"A:\Repositorios\SD-Funeraria\imprimir.rpt");
             oRep.SetParameterValue("@idcliente", id_cliente);
             oRep.SetParameterValue("@idpaquete", id_paquete);
             oRep.SetParameterValue("@fecha", DateTime.Now);
