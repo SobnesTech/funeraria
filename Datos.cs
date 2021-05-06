@@ -89,7 +89,6 @@ namespace Sistema_de_deciciones_de_Funeraria
 
             txt_Cliente.Clear();
             txt_Cliente.Focus();
-            Max();
         } //LA T E R    U S E 
         #endregion 
 
@@ -172,8 +171,8 @@ namespace Sistema_de_deciciones_de_Funeraria
             SqlCommand comando = new SqlCommand(query, conexion);
             comando.Parameters.Clear();
             comando.Parameters.AddWithValue("@id", idcliente);
-            comando.Parameters.AddWithValue("@nombre", txt_Cliente.Text);
-            comando.Parameters.AddWithValue("@domicilio", txt_Domicilio.Text);
+            comando.Parameters.AddWithValue("@nombre", cliente);
+            comando.Parameters.AddWithValue("@domicilio", domicilio);
             comando.Parameters.AddWithValue("@estadocivil", ec);
             comando.Parameters.AddWithValue("@hijos", hijos);
             comando.Parameters.AddWithValue("@ingresoMen", in_mensual);
@@ -252,7 +251,9 @@ namespace Sistema_de_deciciones_de_Funeraria
                 }
                 else
                 {
-                    //MessageBox.Show(hijos.ToString());
+                    cliente = txt_Cliente.Text;
+                    domicilio = txt_Domicilio.Text;
+                    Max();
                     in_mensual = Convert.ToDouble(txt_Ingresos.Text);
                     Desicion_Rules(ec, hijos);
                     Acumulable();
@@ -368,25 +369,5 @@ namespace Sistema_de_deciciones_de_Funeraria
             CBox_Hijos.Enabled = true;
             ec = 1;
         }
-
-        //public void Valida_datos()
-        //{   
-        //    if(rb_casado.Checked == true)
-        //    {
-        //        ec = 1;
-        //        hijos = Convert.ToInt32(CBox_Hijos.Text);
-        //        bt_Continue.Enabled = true;
-        //    }
-        //    else if(rb_soltero.Checked == true)
-        //    {
-        //        ec = 0;
-        //        bt_Continue.Enabled = true;
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Seleccione un estado civil");
-        //    }
-            
-        //}
     }
 }
