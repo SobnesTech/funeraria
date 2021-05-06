@@ -21,32 +21,33 @@ namespace Sistema_de_deciciones_de_Funeraria
         public double mensualidad, enganche, totalpaquete, ingreso_acumulado, ingreso_mensual;
         public string paquete, cliente, domicilio, descripcion;
         public int id_cliente, hijos, id_paquete, idrecibo;
+        byte cambio = 0;
 
         private void cboxPaquetes_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (MessageBox.Show("Esta seguro de esta eleccion?", "AVISO", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-
-                int id_paqueteNuevo = cboxPaquetes.SelectedIndex;
+                
+                id_paquete = cboxPaquetes.SelectedIndex;
                 obj_conexion = new ConexionBD();
                 conexion = new SqlConnection(obj_conexion.Con());
                 conexion.Open();
                 string query = "select * from paquetes where idpaquete = @idpaquete";
                 SqlCommand comando = new SqlCommand(query, conexion);
                 comando.Parameters.Clear();
-                comando.Parameters.AddWithValue("@idpaquete", id_paqueteNuevo);
+                comando.Parameters.AddWithValue("@idpaquete", id_paquete);
                 SqlDataReader leer = comando.ExecuteReader();
                 if (leer.Read())
                 {
                     lblPaquete.Text = leer["nombre"].ToString();
-                    id_paqueteNuevo = Convert.ToInt32(leer["idpaquete"].ToString());
+                    id_paquete = Convert.ToInt32(leer["idpaquete"].ToString());
                     descripcion = leer["descripcion"].ToString();
                     totalpaquete = Convert.ToDouble(leer["precio"].ToString());
                     ObtenerEnganche(totalpaquete);
                     ActualizarSuperior(totalpaquete);
                 }
                 conexion.Close();
-                id_paquete = id_paqueteNuevo;
+                //id_paquete = id_paquete;
             }
             else
             {
@@ -58,30 +59,63 @@ namespace Sistema_de_deciciones_de_Funeraria
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            obj_conexion = new ConexionBD();
-            conexion = new SqlConnection(obj_conexion.Con());
-            conexion.Open();
-            string query = "INSERT into recibos VALUES(@idrecibo,@idcliente,@idpaquete,@enganche,@mensualidad,@estatus, @fecha)";
-            SqlCommand comando = new SqlCommand(query, conexion);
-            comando.Parameters.Clear();
-            comando.Parameters.AddWithValue("@idrecibo", idrecibo);
-            comando.Parameters.AddWithValue("@idcliente", id_cliente);
-            comando.Parameters.AddWithValue("@idpaquete", id_paquete);
-            comando.Parameters.AddWithValue("@enganche", enganche);
-            comando.Parameters.AddWithValue("@mensualidad", mensualidad);
-            comando.Parameters.AddWithValue("@estatus", 1);
-            comando.Parameters.AddWithValue("@fecha", DateTime.Now);
-            comando.ExecuteNonQuery();
-            conexion.Close();
-            MessageBox.Show("Operacion realizada con exito!", "DATOS GUARDADOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            frmrecibos r = new frmrecibos();
-            ReportDocument oRep = new ReportDocument();
-            oRep.Load(@"A:\Repositorios\SD-Funeraria\imprimir.rpt");
-            oRep.SetParameterValue("@idcliente", id_cliente);
-            oRep.SetParameterValue("@idpaquete", id_paquete);
-            oRep.SetParameterValue("@fecha", DateTime.Now);
-            r.crystalReportViewer2.ReportSource = oRep;
-            r.Show();
+            if (cambio == 0)
+            {
+                obj_conexion = new ConexionBD();
+                conexion = new SqlConnection(obj_conexion.Con());
+                conexion.Open();
+                string query = "INSERT into recibos VALUES(@idrecibo,@idcliente,@idpaquete,@enganche,@mensualidad,@estatus, @fecha)";
+                SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.Clear();
+                comando.Parameters.AddWithValue("@idrecibo", idrecibo);
+                comando.Parameters.AddWithValue("@idcliente", id_cliente);
+                comando.Parameters.AddWithValue("@idpaquete", id_paquete);
+                comando.Parameters.AddWithValue("@enganche", enganche);
+                comando.Parameters.AddWithValue("@mensualidad", mensualidad);
+                comando.Parameters.AddWithValue("@estatus", 1);
+                comando.Parameters.AddWithValue("@fecha", DateTime.Now);
+                comando.ExecuteNonQuery();
+                conexion.Close();
+                MessageBox.Show("Operacion realizada con exito!", "DATOS GUARDADOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                frmrecibos r = new frmrecibos();
+                ReportDocument oRep = new ReportDocument();
+                oRep.Load(@"C:\Funeraria\imprimir.rpt");
+                //oRep.Load(@"A:\Repositorios\SD-Funeraria\imprimir.rpt");
+                oRep.SetParameterValue("@idcliente", id_cliente);
+                oRep.SetParameterValue("@idpaquete", id_paquete);
+                oRep.SetParameterValue("@fecha", DateTime.Now);
+                r.crystalReportViewer2.ReportSource = oRep;
+                r.Show();
+            }
+            if (cambio == 1)
+            {
+                obj_conexion = new ConexionBD();
+                conexion = new SqlConnection(obj_conexion.Con());
+                conexion.Open();
+                string query = "UPDATE recibos set idcliente=@idcliente,idpaquete=@idpaquete,enganche=@enganche,mensualidad=@mensualidad,estatus=@estatus, fecha=@fecha where  idrecibo=@idrecibo";
+                SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.Clear();
+                comando.Parameters.AddWithValue("@idrecibo", idrecibo);
+                comando.Parameters.AddWithValue("@idcliente", id_cliente);
+                comando.Parameters.AddWithValue("@idpaquete", id_paquete);
+                comando.Parameters.AddWithValue("@enganche", enganche);
+                comando.Parameters.AddWithValue("@mensualidad", mensualidad);
+                comando.Parameters.AddWithValue("@estatus", 1);
+                comando.Parameters.AddWithValue("@fecha", DateTime.Now);
+                comando.ExecuteNonQuery();
+                conexion.Close();
+                MessageBox.Show("Operacion realizada con exito!", "DATOS GUARDADOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                frmrecibos r = new frmrecibos();
+                ReportDocument oRep = new ReportDocument();
+                oRep.Load(@"C:\Funeraria\imprimir.rpt");
+                //oRep.Load(@"A:\Repositorios\SD-Funeraria\imprimir.rpt");
+                oRep.SetParameterValue("@idcliente", id_cliente);
+                oRep.SetParameterValue("@idpaquete", id_paquete);
+                oRep.SetParameterValue("@fecha", DateTime.Now);
+                r.crystalReportViewer2.ReportSource = oRep;
+                r.Show();
+            }
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -93,6 +127,7 @@ namespace Sistema_de_deciciones_de_Funeraria
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
+            cambio = 1;
             mensaje.Visible = true;
             cboxPaquetes.Visible = true;
         }
@@ -128,6 +163,7 @@ namespace Sistema_de_deciciones_de_Funeraria
         {
             enganche = totalsup * 0.75;
             mensualidad = (totalsup - enganche) / 3;
+            mensualidad = Math.Round(mensualidad, 2, MidpointRounding.AwayFromZero);
             lblEnganche.Text = "$ " + enganche.ToString() + " mxn";
             lblMensualidad.Text = "$ " + mensualidad.ToString() + " mxn";
             return mensualidad;
