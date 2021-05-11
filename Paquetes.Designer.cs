@@ -36,10 +36,10 @@ namespace Sistema_de_deciciones_de_Funeraria
             this.bt_Estandar = new System.Windows.Forms.Button();
             this.bt_Economico = new System.Windows.Forms.Button();
             this.bt_Diamante = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.bt_sig = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,21 +126,6 @@ namespace Sistema_de_deciciones_de_Funeraria
             this.bt_Diamante.UseVisualStyleBackColor = false;
             this.bt_Diamante.Click += new System.EventHandler(this.bt_Diamante_Click);
             // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label3.Location = new System.Drawing.Point(138, 440);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(348, 26);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Cliquee el paquete que desea contratar.";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -176,6 +161,18 @@ namespace Sistema_de_deciciones_de_Funeraria
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // bt_sig
+            // 
+            this.bt_sig.BackColor = System.Drawing.Color.Transparent;
+            this.bt_sig.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.bt_sig.Location = new System.Drawing.Point(128, 450);
+            this.bt_sig.Name = "bt_sig";
+            this.bt_sig.Size = new System.Drawing.Size(365, 23);
+            this.bt_sig.TabIndex = 17;
+            this.bt_sig.Text = "Click o Enter aqui para continuar";
+            this.bt_sig.UseVisualStyleBackColor = false;
+            this.bt_sig.Click += new System.EventHandler(this.bt_sig_Click);
+            // 
             // Paquetes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,10 +181,10 @@ namespace Sistema_de_deciciones_de_Funeraria
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(668, 513);
+            this.Controls.Add(this.bt_sig);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.bt_Economico);
             this.Controls.Add(this.bt_Diamante);
             this.Controls.Add(this.bt_Estandar);
@@ -199,6 +196,7 @@ namespace Sistema_de_deciciones_de_Funeraria
             this.Name = "Paquetes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P A Q U E T E S    D I S P O N I B L E S ";
+            this.Load += new System.EventHandler(this.Paquetes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -212,10 +210,10 @@ namespace Sistema_de_deciciones_de_Funeraria
         private System.Windows.Forms.Button bt_Estandar;
         private System.Windows.Forms.Button bt_Economico;
         private System.Windows.Forms.Button bt_Diamante;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bt_sig;
     }
 }
 
