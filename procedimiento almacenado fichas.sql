@@ -29,5 +29,5 @@ begin
 	from recibos r
 	join paquetes p on r.idpaquete = p.idpaquete
 	join clientes c on r.idcliente = c.idcliente
-	where r.idcliente = 29 and r.idpaquete = 4
+	where r.idcliente = @idcliente and r.idpaquete = @idpaquete
 end
